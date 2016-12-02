@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		6557ABA11DF0D4C500268391 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA01DF0D4C500268391 /* Chat.swift */; };
+		6557ABA81DF20F9800268391 /* MG Basic Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA31DF20F9800268391 /* MG Basic Math.swift */; };
+		6557ABA91DF20F9800268391 /* MG Benchmark Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA41DF20F9800268391 /* MG Benchmark Tools.swift */; };
+		6557ABAA1DF20F9800268391 /* SMP Bignum Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA51DF20F9800268391 /* SMP Bignum Extensions.swift */; };
+		6557ABAB1DF20F9800268391 /* SMP Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA61DF20F9800268391 /* SMP Core.swift */; };
+		6557ABAC1DF20F9800268391 /* SMP String Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA71DF20F9800268391 /* SMP String Module.swift */; };
 		65C177EB1DDE5D0700A96C59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C177EA1DDE5D0700A96C59 /* AppDelegate.swift */; };
 		65C177ED1DDE5D0700A96C59 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C177EC1DDE5D0700A96C59 /* MainViewController.swift */; };
 		65C177F01DDE5D0700A96C59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C177EE1DDE5D0700A96C59 /* Main.storyboard */; };
@@ -41,6 +46,11 @@
 		59D426779F3841A2DEF6D718 /* Pods-SecureChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B17A4F20B5F51223C309869 /* Pods-SecureChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6557ABA01DF0D4C500268391 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		6557ABA31DF20F9800268391 /* MG Basic Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MG Basic Math.swift"; sourceTree = "<group>"; };
+		6557ABA41DF20F9800268391 /* MG Benchmark Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MG Benchmark Tools.swift"; sourceTree = "<group>"; };
+		6557ABA51DF20F9800268391 /* SMP Bignum Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP Bignum Extensions.swift"; sourceTree = "<group>"; };
+		6557ABA61DF20F9800268391 /* SMP Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP Core.swift"; sourceTree = "<group>"; };
+		6557ABA71DF20F9800268391 /* SMP String Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP String Module.swift"; sourceTree = "<group>"; };
 		65C177E71DDE5D0700A96C59 /* SecureChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C177EA1DDE5D0700A96C59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C177EC1DDE5D0700A96C59 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +96,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6557ABA21DF20F8300268391 /* BigInt */ = {
+			isa = PBXGroup;
+			children = (
+				6557ABA31DF20F9800268391 /* MG Basic Math.swift */,
+				6557ABA41DF20F9800268391 /* MG Benchmark Tools.swift */,
+				6557ABA51DF20F9800268391 /* SMP Bignum Extensions.swift */,
+				6557ABA61DF20F9800268391 /* SMP Core.swift */,
+				6557ABA71DF20F9800268391 /* SMP String Module.swift */,
+			);
+			name = BigInt;
+			sourceTree = "<group>";
+		};
 		65C177DE1DDE5D0700A96C59 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +131,7 @@
 		65C177E91DDE5D0700A96C59 /* SecureChat */ = {
 			isa = PBXGroup;
 			children = (
+				6557ABA21DF20F8300268391 /* BigInt */,
 				65C178141DDE732B00A96C59 /* SecureChat.entitlements */,
 				65C177EA1DDE5D0700A96C59 /* AppDelegate.swift */,
 				65C177EC1DDE5D0700A96C59 /* MainViewController.swift */,
@@ -367,11 +390,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C1781A1DE297D400A96C59 /* ChatCreatorVC.swift in Sources */,
+				6557ABA81DF20F9800268391 /* MG Basic Math.swift in Sources */,
 				6557ABA11DF0D4C500268391 /* Chat.swift in Sources */,
+				6557ABA91DF20F9800268391 /* MG Benchmark Tools.swift in Sources */,
+				6557ABAB1DF20F9800268391 /* SMP Core.swift in Sources */,
 				65C178181DE295AD00A96C59 /* ChatListsVC.swift in Sources */,
 				65C177ED1DDE5D0700A96C59 /* MainViewController.swift in Sources */,
 				65C1780D1DDE65D800A96C59 /* ChatViewController.swift in Sources */,
 				65C177EB1DDE5D0700A96C59 /* AppDelegate.swift in Sources */,
+				6557ABAC1DF20F9800268391 /* SMP String Module.swift in Sources */,
+				6557ABAA1DF20F9800268391 /* SMP Bignum Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
