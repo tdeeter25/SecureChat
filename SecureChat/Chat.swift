@@ -14,14 +14,17 @@ class Chat {
     
     let id: String!
     let title: String!
-    let cipher: Int!
+    let privateKey: BInt!
+    let publicKey: BInt!
+    let modulus: BInt!
     
     init(snapshot: FIRDataSnapshot){
         let dict = snapshot.value as? NSDictionary
         id = snapshot.key
         title = dict?["chatTitle"] as! String
-        cipher = dict?["cipher"] as! Int
+        privateKey = BInt(dict?["privateKey"] as! String)
+        publicKey = BInt(dict?["publicKey"] as! String)
+        modulus = BInt(dict?["modulus"] as! String)
     }
-    
     
 }

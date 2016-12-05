@@ -18,7 +18,7 @@ class MainViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        /*
         //Input a string
         var str = "thi"
         
@@ -59,17 +59,13 @@ class MainViewController: UIViewController, FBSDKLoginButtonDelegate {
             var num = BInt(byte)
             //decrypt the encrypted number e by doing e ^ Private Key mod n
             let decrypt = mod_exp(num, privateKey,mod)
-        
             let intByte = Int(decrypt.dec)
-            
             var test = Character(UnicodeScalar(intByte!)!)
             decryptedString.append(test)
         }
         
         print("Decrypted String")
         print(decryptedString)
-        
-        /*
         let count = decryptValue.characters.count
         var hexValues = [String]()
         var decryptString = ""
@@ -84,10 +80,6 @@ class MainViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         print(decryptString)
         */
-        
-        
-        
-        
     }
 
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {

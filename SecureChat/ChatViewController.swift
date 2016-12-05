@@ -26,19 +26,16 @@ class ChatViewController: JSQMessagesViewController {
     var isDecrypted = false
     
     
-    var guessedCipher:Int?
+    var guessedCipher:BInt?
 
     @IBOutlet weak var segControl: UISegmentedControl!
-    
-    
+   
     var currentChat: Chat!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         print(currentChat.title)
-        print(currentChat.cipher)
         
         self.edgesForExtendedLayout = UIRectEdge()
         ref = FIRDatabase.database().reference()
@@ -74,7 +71,6 @@ class ChatViewController: JSQMessagesViewController {
             isEncrypted = true
             isDecrypted = false
             
-            
             self.messages.removeAll()
             self.observeMessages()
             self.collectionView!.reloadData()
@@ -84,11 +80,11 @@ class ChatViewController: JSQMessagesViewController {
             isDecrypted = true
             
             let alert = UIAlertController(title: "Select Number",
-                                          message: "Choose a number to decrypt the message", preferredStyle: .alert)
+                                          message: "Enter the Private Key to decrypt the message", preferredStyle: .alert)
             
             let yesAction = UIAlertAction(title: "Done", style: .destructive, handler: { action in
                 let text = ((alert.textFields?.first)! as UITextField).text
-                self.guessedCipher = Int(text!)
+                self.guessedCipher = BInt(text!)
                 
                 self.messages.removeAll()
                 self.observeMessages()
@@ -103,58 +99,38 @@ class ChatViewController: JSQMessagesViewController {
             
             self.present(alert, animated: true, completion: nil)
         }
-        
-        
     }
     
     
     
     func encryptMessage(str: String) -> String {
         
-        var tempString = str
-
-        var length = tempString.characters.count
-        var stringData = [Int]()
-        
-        for i in 0...length-1{
-            let index = tempString.index((tempString.startIndex), offsetBy: i)
-            var aValue = tempString[index].asciiValue
-            stringData.append(Int(aValue!))
-        }
-        
+        let byteArray = [UInt8](str.utf8)
         var encryptedString = ""
-        for number in stringData{
-            //encrypt the number using RSA instead of Caesar shit
-            var encryptedNumber = number - currentChat.cipher
-            var test = Character(UnicodeScalar(encryptedNumber)!)
-            encryptedString.append(test)
+        for number in byteArray {
+            let numAsInt = Int(number)
+            let base = BInt(numAsInt)
+            //Encrypt the number m by doing m ^ Public Key mod n
+            let encrypt = mod_exp(base, self.currentChat.publicKey, self.currentChat.modulus)
+            encryptedString.append(encrypt.dec)
+            encryptedString.append(" ")
         }
         return encryptedString
-    
     }
     
-    func decryptMessage(str: String, cipher: Int) -> String {
+    func decryptMessage(str: String, cipher: BInt) -> String {
         
-        
-        var encryptedString = str
-        
-        var enLength = encryptedString.characters.count
-        var enStringData = [Int]()
-        
-        for i in 0...enLength-1{
-            let index = encryptedString.index(encryptedString.startIndex, offsetBy: i)
-            var aValue = encryptedString[index].asciiValue
-            enStringData.append(Int(aValue!))
-        }
-        
+        let encryptData = str.components(separatedBy: " ")
         var decryptedString = ""
-        for number in enStringData{
-            //decrypt the number using RSA instead of Caesar shit
-            let decryptedNumber = number + cipher
-            var test = Character(UnicodeScalar(decryptedNumber)!)
+        
+        for byte in encryptData {
+            let num = BInt(byte)
+            //decrypt the encrypted number e by doing e ^ Private Key mod n
+            let decrypt = mod_exp(num, self.guessedCipher!, self.currentChat.modulus)
+            let intByte = Int(decrypt.dec)
+            let test = Character(UnicodeScalar(intByte!)!)
             decryptedString.append(test)
         }
-        
         return decryptedString
     }
     
@@ -210,9 +186,17 @@ class ChatViewController: JSQMessagesViewController {
                 
             }
             else {
-                self.addMessage(id, text: text)
+                var tempStr = "" //a dummy message that will be displayed.
+                let textData = text.components(separatedBy: " ")
+                for value in textData {
+                    var aValue = BInt(value)
+                    aValue = (aValue % 92) + 32 //a padding on the value to make it a printable ascii character
+                    let aValueInt = Int(aValue.dec)
+                    let char = Character(UnicodeScalar(aValueInt!)!)
+                    tempStr.append(char)
+                }
+                self.addMessage(id, text: tempStr)
             }
-            
             self.finishReceivingMessage()
             
         }
