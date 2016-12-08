@@ -35,7 +35,6 @@ class ChatCreatorVC: FormViewController {
                 $0.onCellSelection { cell, row in
                     print("yes")
                     self.pushDataToFirebase()
-                    self.navigationController?.popViewController(animated: true)
                 }
                 
         }
@@ -70,7 +69,7 @@ class ChatCreatorVC: FormViewController {
                                          "modulus": modulus as AnyObject,
                                          ]
         chatsRef.setValue(dict)
-        
+        self.navigationController?.popViewController(animated: true)
     }
     
     //returns true if number is prime

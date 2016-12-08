@@ -166,7 +166,7 @@ var encryptedString = ""
 for number in stringData{
     //encrypt the number using RSA instead of Caesar shit
     var encryptedNumber = number + 5
-    var test = Character(UnicodeScalar(encryptedNumber)!)
+    var test = Character( )
     encryptedString.append(test)
 }
 print("Encrypted String")

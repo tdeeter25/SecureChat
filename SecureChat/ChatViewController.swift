@@ -19,6 +19,7 @@ class ChatViewController: JSQMessagesViewController {
     var messageRef: FIRDatabaseReference!
     
     var messages = [JSQMessage]()
+    var messageKeys = [String]()
     var outgoingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     
@@ -41,7 +42,7 @@ class ChatViewController: JSQMessagesViewController {
         ref = FIRDatabase.database().reference()
         
         messageRef = ref.child("messages").child(self.currentChat.id)
-        /*
+        
         if let user = FIRAuth.auth()?.currentUser {
             senderId = user.uid
             senderDisplayName = user.displayName
@@ -49,15 +50,11 @@ class ChatViewController: JSQMessagesViewController {
         else{
             senderId = "1234567"
             senderDisplayName = "John Cena"
-        }*/
-        senderId = "1234567"
-        senderDisplayName = "John Cena"
-        
+        }
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         setupBubbles()
         observeMessages()
-        
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -71,10 +68,12 @@ class ChatViewController: JSQMessagesViewController {
             isEncrypted = true
             isDecrypted = false
             
-            self.messages.removeAll()
+           self.messages.removeAll()
+            self.messageKeys.removeAll()
             self.observeMessages()
-            self.collectionView!.reloadData()
+            
         }
+            
         else{
             isEncrypted = false
             isDecrypted = true
@@ -87,8 +86,8 @@ class ChatViewController: JSQMessagesViewController {
                 self.guessedCipher = BInt(text!)
                 
                 self.messages.removeAll()
+                self.messageKeys.removeAll()
                 self.observeMessages()
-                self.collectionView!.reloadData()
             })
             alert.addAction(yesAction)
             
@@ -99,6 +98,7 @@ class ChatViewController: JSQMessagesViewController {
             
             self.present(alert, animated: true, completion: nil)
         }
+        self.collectionView.reloadData()
     }
     
     
@@ -147,7 +147,8 @@ class ChatViewController: JSQMessagesViewController {
         
         let messageItem:[String:Any] = [
             "text": encryptedString,
-            "senderId": senderId
+            "senderId": senderId,
+            "senderName": self.senderDisplayName
         ]
         
         itemRef.setValue(messageItem)
@@ -155,54 +156,72 @@ class ChatViewController: JSQMessagesViewController {
         JSQSystemSoundPlayer.jsq_playMessageSentSound()
         
         finishSendingMessage()
-        print(text)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
     }
     
-    func addMessage(_ id: String, text: String){
+    func addMessage(_ id: String, text: String, senderName: String){
         let message = JSQMessage(senderId: id, displayName: senderDisplayName, text: text)
         messages.append(message!)
     }
     
     // FIX THIS MAYBE
     fileprivate func observeMessages(){
-        
+        self.messageKeys.removeAll()
         let messagesQuery = messageRef.queryLimited(toLast: 50)
-        
+
         messagesQuery.observe(.childAdded) { (snapshot: FIRDataSnapshot!) in
+                let dict = snapshot.value as? NSDictionary
             
-            let dict = snapshot.value as? NSDictionary
-            
-            let id = dict?["senderId"] as! String
-            let text = dict?["text"] as! String
-            
-            if self.isDecrypted {
+                let id = dict?["senderId"] as! String
+                let text = dict?["text"] as! String
+                let senderName = dict?["senderName"] as! String
                 
-                let decryptedString = self.decryptMessage(str: text, cipher: self.guessedCipher!)
-                self.addMessage(id, text: decryptedString)
-                
-            }
-            else {
-                var tempStr = "" //a dummy message that will be displayed.
-                let textData = text.components(separatedBy: " ")
-                for value in textData {
-                    var aValue = BInt(value)
-                    aValue = (aValue % 92) + 32 //a padding on the value to make it a printable ascii character
-                    let aValueInt = Int(aValue.dec)
-                    let char = Character(UnicodeScalar(aValueInt!)!)
-                    tempStr.append(char)
+                if self.isDecrypted {
+                    print("this called")
+                    let decryptedString = self.decryptMessage(str: text, cipher: self.guessedCipher!)
+                    if self.doesMessageExistYet(messageId: snapshot.key) == false{
+                        print("adding message")
+                        self.addMessage(id, text: decryptedString, senderName: senderName)
+                    }
                 }
-                self.addMessage(id, text: tempStr)
+                else {
+                    print("Else getting called")
+                    var tempStr = "" //a dummy message that will be displayed.
+                    let textData = text.components(separatedBy: " ")
+                    for value in textData {
+                        var aValue = BInt(value)
+                        aValue = (aValue % 92) + 32 //a padding on the value to make it a printable ascii character
+                        let aValueInt = Int(aValue.dec)
+                        let char = Character(UnicodeScalar(aValueInt!)!)
+                        tempStr.append(char)
+                    }
+                    if self.doesMessageExistYet(messageId: snapshot.key) == false{
+                        print("adding message")
+                        self.addMessage(id, text: tempStr, senderName: senderName)
+                    }
+                }
+            
+            if !self.messageKeys.contains(snapshot.key){
+                self.messageKeys.append(snapshot.key)
             }
             self.finishReceivingMessage()
-            
         }
-        
     }
     
+    func doesMessageExistYet(messageId: String) -> Bool{
+        print(messageId)
+        print("blah")
+        print(self.messageKeys)
+        for messageKey in self.messageKeys{
+            if messageKey == messageId{
+                return true
+            }
+        }
+        return false
+    }
     
     fileprivate func setupBubbles(){
         let factory = JSQMessagesBubbleImageFactory()
@@ -255,7 +274,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView?, attributedTextForMessageBubbleTopLabelAt indexPath: IndexPath!) -> NSAttributedString? {
-        /*let message = messages[indexPath.item]
+        let message = messages[indexPath.item]
         switch message.senderId {
         case senderId:
             return nil
@@ -265,8 +284,7 @@ class ChatViewController: JSQMessagesViewController {
                 return nil
             }
             return NSAttributedString(string: senderDisplayName)
-        }*/
-        return nil
+        }
     }
     
 

@@ -52,17 +52,56 @@
                                     <action selector="loginTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h3l-XJ-O8L"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMc-Hk-qdm">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lO3-9z-p1E">
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mrS-UC-Ma5">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="219" id="Eae-K8-pbN"/>
+                                    <constraint firstAttribute="height" constant="50" id="ZHl-Ze-oTR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                                <state key="normal" title="Sign Up">
+                                    <color key="titleColor" red="0.17254901959999999" green="0.37647058820000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="backgroundColor">
+                                        <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u5r-0x-5sa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.44463272310000002" blue="0.90125756680000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="9CU-fs-Yqn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="29" id="0eK-Jr-fXF"/>
+                            <constraint firstItem="Pta-dA-cbd" firstAttribute="top" secondItem="CMc-Hk-qdm" secondAttribute="bottom" constant="8" symbolic="YES" id="1Go-GD-7jE"/>
+                            <constraint firstItem="lO3-9z-p1E" firstAttribute="trailing" secondItem="CMc-Hk-qdm" secondAttribute="trailing" id="40p-rH-TrU"/>
+                            <constraint firstItem="CMc-Hk-qdm" firstAttribute="trailing" secondItem="Pta-dA-cbd" secondAttribute="trailing" id="4XX-zx-h28"/>
+                            <constraint firstItem="lO3-9z-p1E" firstAttribute="leading" secondItem="CMc-Hk-qdm" secondAttribute="leading" id="6tL-dW-yGA"/>
+                            <constraint firstItem="CMc-Hk-qdm" firstAttribute="leading" secondItem="Pta-dA-cbd" secondAttribute="leading" id="CMZ-ei-w5q"/>
+                            <constraint firstItem="CMc-Hk-qdm" firstAttribute="top" secondItem="lO3-9z-p1E" secondAttribute="bottom" constant="8" symbolic="YES" id="Ha3-ve-ggl"/>
                             <constraint firstItem="9CU-fs-Yqn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="TE5-KJ-9pC"/>
+                            <constraint firstItem="mrS-UC-Ma5" firstAttribute="top" secondItem="Pta-dA-cbd" secondAttribute="bottom" constant="8" symbolic="YES" id="ZKb-hY-wuc"/>
                             <constraint firstItem="Pta-dA-cbd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fV9-xi-hsk"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Pta-dA-cbd" secondAttribute="bottom" constant="196" id="i9R-km-bcv"/>
+                            <constraint firstItem="mrS-UC-Ma5" firstAttribute="leading" secondItem="Pta-dA-cbd" secondAttribute="leading" id="q1b-HH-oWl"/>
                             <constraint firstItem="Pta-dA-cbd" firstAttribute="centerX" secondItem="9CU-fs-Yqn" secondAttribute="centerX" id="tcf-59-V0x"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emailTextField" destination="lO3-9z-p1E" id="4My-PQ-xhg"/>
+                        <outlet property="passwordTextField" destination="CMc-Hk-qdm" id="Khg-A0-jkn"/>
                         <segue destination="Mq5-V3-HI5" kind="show" identifier="goToChatList" id="S1Z-Dr-0bL"/>
                     </connections>
                 </viewController>
