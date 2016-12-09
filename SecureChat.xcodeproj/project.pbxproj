@@ -14,6 +14,7 @@
 		6557ABAB1DF20F9800268391 /* SMP Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA61DF20F9800268391 /* SMP Core.swift */; };
 		6557ABAC1DF20F9800268391 /* SMP String Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABA71DF20F9800268391 /* SMP String Module.swift */; };
 		6557ABAE1DF8FB4500268391 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABAD1DF8FB4500268391 /* Message.swift */; };
+		6557ABB01DFA5B7800268391 /* ChatInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6557ABAF1DFA5B7800268391 /* ChatInfoVC.swift */; };
 		65C177EB1DDE5D0700A96C59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C177EA1DDE5D0700A96C59 /* AppDelegate.swift */; };
 		65C177ED1DDE5D0700A96C59 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C177EC1DDE5D0700A96C59 /* MainViewController.swift */; };
 		65C177F01DDE5D0700A96C59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65C177EE1DDE5D0700A96C59 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		6557ABA61DF20F9800268391 /* SMP Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP Core.swift"; sourceTree = "<group>"; };
 		6557ABA71DF20F9800268391 /* SMP String Module.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SMP String Module.swift"; sourceTree = "<group>"; };
 		6557ABAD1DF8FB4500268391 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		6557ABAF1DFA5B7800268391 /* ChatInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatInfoVC.swift; sourceTree = "<group>"; };
 		65C177E71DDE5D0700A96C59 /* SecureChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65C177EA1DDE5D0700A96C59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		65C177EC1DDE5D0700A96C59 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				6557ABA01DF0D4C500268391 /* Chat.swift */,
 				6557ABAD1DF8FB4500268391 /* Message.swift */,
 				65C177EE1DDE5D0700A96C59 /* Main.storyboard */,
+				6557ABAF1DFA5B7800268391 /* ChatInfoVC.swift */,
 				65C178191DE297D400A96C59 /* ChatCreatorVC.swift */,
 				65C1780C1DDE65D800A96C59 /* ChatViewController.swift */,
 				65C177F11DDE5D0700A96C59 /* Assets.xcassets */,
@@ -397,6 +400,7 @@
 				6557ABA11DF0D4C500268391 /* Chat.swift in Sources */,
 				6557ABA91DF20F9800268391 /* MG Benchmark Tools.swift in Sources */,
 				6557ABAB1DF20F9800268391 /* SMP Core.swift in Sources */,
+				6557ABB01DFA5B7800268391 /* ChatInfoVC.swift in Sources */,
 				65C178181DE295AD00A96C59 /* ChatListsVC.swift in Sources */,
 				65C177ED1DDE5D0700A96C59 /* MainViewController.swift in Sources */,
 				65C1780D1DDE65D800A96C59 /* ChatViewController.swift in Sources */,

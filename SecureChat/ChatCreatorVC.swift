@@ -60,6 +60,7 @@ class ChatCreatorVC: FormViewController {
         let privateKey = generatePrivateKey(pubKey: Int(publicKey.dec)!, totient: totient)
         let modulus = genereateModulus(p1: p1, p2: p2).dec
 
+        showMessage("Private Key is " + privateKey.dec, message: "Be sure to remember this value!")
         
         chatsRef = ref.child("chats").childByAutoId()
         
@@ -85,10 +86,10 @@ class ChatCreatorVC: FormViewController {
     }
     
     func isValidNumber(num: Int) -> Bool {
-        return isPrime(num: num) && num < 10000000000
+        return isPrime(num: num) && num > 100
     }
     
-    
+    //generates the public key, which is a random exponent in the range 1 < e < totient
     func generatePublicKey(p1: Int, p2: Int) -> BInt {
         let totient = (p1-1) * (p2-1)
         let pubKey = randE(phi: totient)
@@ -101,6 +102,7 @@ class ChatCreatorVC: FormViewController {
         return BInt(inverse(num: pubKey, phi: totient))
     }
     
+    //returns the product of two prime numbers
     func genereateModulus(p1: Int, p2: Int) -> BInt {
         let prime1 = BInt(p1)
         let prime2 = BInt(p2)

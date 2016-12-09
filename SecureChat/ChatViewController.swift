@@ -36,8 +36,6 @@ class ChatViewController: JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(currentChat.title)
-        
         self.edgesForExtendedLayout = UIRectEdge()
         ref = FIRDatabase.database().reference()
         
@@ -64,16 +62,13 @@ class ChatViewController: JSQMessagesViewController {
     
     @IBAction func changeMessageType(_ sender: AnyObject) {
         if(segControl.selectedSegmentIndex == 0){
-            print("encrypted")
             isEncrypted = true
             isDecrypted = false
             
-           self.messages.removeAll()
+            self.messages.removeAll()
             self.messageKeys.removeAll()
             self.observeMessages()
-            
         }
-            
         else{
             isEncrypted = false
             isDecrypted = true
@@ -127,8 +122,8 @@ class ChatViewController: JSQMessagesViewController {
             let num = BInt(byte)
             //decrypt the encrypted number e by doing e ^ Private Key mod n
             let decrypt = mod_exp(num, self.guessedCipher!, self.currentChat.modulus)
-            let intByte = Int(decrypt.dec)
-            let test = Character(UnicodeScalar(intByte!)!)
+            let intByte = Int(decrypt.dec)! % 100000 //sets a modulus to make sure the value can be represented in unicode
+            let test = Character(UnicodeScalar(intByte)!)
             decryptedString.append(test)
         }
         return decryptedString
@@ -148,7 +143,7 @@ class ChatViewController: JSQMessagesViewController {
         let messageItem:[String:Any] = [
             "text": encryptedString,
             "senderId": senderId,
-            "senderName": self.senderDisplayName
+            "senderName": senderDisplayName
         ]
         
         itemRef.setValue(messageItem)
@@ -163,7 +158,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func addMessage(_ id: String, text: String, senderName: String){
-        let message = JSQMessage(senderId: id, displayName: senderDisplayName, text: text)
+        let message = JSQMessage(senderId: id, displayName: senderName, text: text)
         messages.append(message!)
     }
     
@@ -178,17 +173,14 @@ class ChatViewController: JSQMessagesViewController {
                 let id = dict?["senderId"] as! String
                 let text = dict?["text"] as! String
                 let senderName = dict?["senderName"] as! String
-                
+            
                 if self.isDecrypted {
-                    print("this called")
                     let decryptedString = self.decryptMessage(str: text, cipher: self.guessedCipher!)
                     if self.doesMessageExistYet(messageId: snapshot.key) == false{
-                        print("adding message")
                         self.addMessage(id, text: decryptedString, senderName: senderName)
                     }
                 }
                 else {
-                    print("Else getting called")
                     var tempStr = "" //a dummy message that will be displayed.
                     let textData = text.components(separatedBy: " ")
                     for value in textData {
@@ -199,7 +191,6 @@ class ChatViewController: JSQMessagesViewController {
                         tempStr.append(char)
                     }
                     if self.doesMessageExistYet(messageId: snapshot.key) == false{
-                        print("adding message")
                         self.addMessage(id, text: tempStr, senderName: senderName)
                     }
                 }
@@ -212,9 +203,6 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     func doesMessageExistYet(messageId: String) -> Bool{
-        print(messageId)
-        print("blah")
-        print(self.messageKeys)
         for messageKey in self.messageKeys{
             if messageKey == messageId{
                 return true
@@ -290,15 +278,19 @@ class ChatViewController: JSQMessagesViewController {
 
     
     
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "displayChatInfo"{
+            let dvc = segue.destination as! ChatInfoVC
+            dvc.currentChat = self.currentChat
+        }
+        
     }
-    */
 
 }
 
