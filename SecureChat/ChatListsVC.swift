@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 
 class ChatListsVC: UITableViewController {
 
@@ -34,6 +35,18 @@ class ChatListsVC: UITableViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    @IBAction func signOut(_ sender: Any) {
+        let firebaseAuth = FIRAuth.auth()
+        do {
+            try firebaseAuth?.signOut()
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            return
+        }
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "main") as! MainViewController
+        self.present(vc, animated: true, completion: nil)
     }
     
     func observeChats(){

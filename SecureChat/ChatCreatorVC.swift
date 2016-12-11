@@ -24,8 +24,8 @@ class ChatCreatorVC: FormViewController {
             Section("Chat Creation Form")
             
             <<< TextRow("Name") { $0.title = "Chat Name" }
-            <<< IntRow("Prime1") { $0.title = "Pick a Prime Number" }
-            <<< IntRow("Prime2") { $0.title = "Pick a Second Prime Number" }
+            <<< TextRow("Prime1") { $0.title = "Pick a Prime Number" }
+            <<< TextRow("Prime2") { $0.title = "Pick a Second Prime Number" }
 
 
             +++ Section()
@@ -44,9 +44,13 @@ class ChatCreatorVC: FormViewController {
         let chatInfo = self.form.values(includeHidden: false)
         let chatTitle = chatInfo["Name"] as! String
         //let cipher = chatInfo["Integer"] as! Int
-        var p1 = chatInfo["Prime1"] as! Int
-        var p2 = chatInfo["Prime2"] as! Int
-        
+        let p1 = BInt(chatInfo["Prime1"] as! String)
+        let p2 = BInt(chatInfo["Prime2"] as! String)
+        //let p1 = randPrimeBInt()
+        //let p2 = randPrimeBInt()
+        print("primes generated")
+        print(p1)
+        print(p2)
         
         //cast to BigInts to be used for calculations
         
@@ -56,9 +60,15 @@ class ChatCreatorVC: FormViewController {
         }
     
         var totient = (p1-1) * (p2-1)
+        print("totient")
+        print(totient)
+        
         let publicKey = generatePublicKey(p1: p1, p2: p2)
-        let privateKey = generatePrivateKey(pubKey: Int(publicKey.dec)!, totient: totient)
+        print("pulbic Key")
+        let privateKey = generatePrivateKey(pubKey: publicKey, totient: totient)
+        print("Private Key")
         let modulus = genereateModulus(p1: p1, p2: p2).dec
+        print("modulus")
 
         showMessage("Private Key is " + privateKey.dec, message: "Be sure to remember this value!")
         
@@ -73,9 +83,10 @@ class ChatCreatorVC: FormViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    /*
     //returns true if number is prime
-    func isPrime(num: Int) -> Bool {
-        var j = Int(sqrt(Double(num)))
+    func isPrime(num: BInt) -> Bool {
+        var j = BInt(sqrt(Double(num)))
         
         for i in stride(from: 2, to: j, by: 1){
             if(num % i == 0){
@@ -84,64 +95,101 @@ class ChatCreatorVC: FormViewController {
         }
         return true
     }
+    */
     
-    func isValidNumber(num: Int) -> Bool {
-        return isPrime(num: num) && num > 100
+    func isPrime(_ n: BInt) -> Bool
+    {
+        if n <= 3 { return n > 1 }
+        
+        if ((n % 2) == 0) || ((n % 3) == 0) { return false }
+        
+        var i = 5
+        while (i * i) <= n
+        {
+            if ((n % i) == 0) || ((n % (i + 2)) == 0)
+            {
+                return false
+            }
+            i += 6
+        }
+        return true
+    }
+    
+    func isValidNumber(num: BInt) -> Bool {
+        return isPrime(num) && num > 100
     }
     
     //generates the public key, which is a random exponent in the range 1 < e < totient
-    func generatePublicKey(p1: Int, p2: Int) -> BInt {
+    func generatePublicKey(p1: BInt, p2: BInt) -> BInt {
         let totient = (p1-1) * (p2-1)
         let pubKey = randE(phi: totient)
         
-        return BInt(pubKey)
+        return pubKey
+    }
+    
+    //returns the Euler's totient of two numbers
+    func generateTotient(p1: BInt, p2: BInt) -> BInt {
+        return (p1 - 1) * (p2 - 1)
     }
     
     
-    func generatePrivateKey(pubKey: Int, totient: Int) -> BInt {
-        return BInt(inverse(num: pubKey, phi: totient))
+    
+    func generatePrivateKey(pubKey: BInt, totient: BInt) -> BInt {
+        return inverse(num: pubKey, phi: totient)
     }
     
     //returns the product of two prime numbers
-    func genereateModulus(p1: Int, p2: Int) -> BInt {
-        let prime1 = BInt(p1)
-        let prime2 = BInt(p2)
-        
-        return prime1 * prime2
+    func genereateModulus(p1: BInt, p2: BInt) -> BInt {
+        return p1 * p2
     }
 
     
     
     //generate random prime number in the range 1 to num
-    func randPrime(num: Int) -> Int{
+    func randPrime(num: Int) -> BInt{
         var prime = UInt64.random(lower: 1, upper: UInt64(num))
         var n = UInt64(num)
         n += n % 2
         
         prime += 1 - prime % 2
         while true {
-            if isPrime(num: Int(prime)) {
-                return Int(prime)
+            if isPrime(BInt(prime)) {
+                return BInt(prime)
             }
             prime = (prime + 2) % n
         }
     }
-    
+ 
     //finds a random prime number no greater than the totient that is coprime with it
-    func randE(phi: Int) -> Int {
-        var e = randPrime(num: phi)
+    func randE(phi: BInt) -> BInt {
+        var e: BInt
         
+        if let bound = Int(phi.dec){
+            e = randPrime(num: Int(phi.dec)!)
+        }
+        else {
+            e = BInt(Int(INT_MAX)) // the number was too big, just use INT_MAX as upper bound
+        }
         while true {
-            if gcd(phi, Int(e)) == 1 {
-                return Int(e)
+            if gcd(phi, e) == 1 { //test if gcd is 1
+                return e
             }
-            e = (e+1 % phi)
+            e = (e+1 % phi) // to make sure e never exceeds phi
             if e <= 2 {
                 e = 3
             }
         }
     }
+    /*
+    func randPrimeBInt(numBits: Int) -> BInt{
+        var n = randomBInt(bits: numBits)
+        while isPrime(n) == false {
+            n = n - 1
+        }
+        return n
+    }*/
     
+    /*
     //returns the gcd of two numbers
     func gcd(_ a: Int, _ b: Int) -> Int {
         if b == 0 {
@@ -154,14 +202,13 @@ class ChatCreatorVC: FormViewController {
             }
         }
     }
-    
+    */
     //generate the inverse using Euclid's Extended algorithm
-    //used for generation of private key
-    func inverse(num: Int, phi: Int) -> Int{
+    func inverse(num: BInt, phi: BInt) -> BInt{
         var a = num, b = phi
-        var x=0, y=1, x0 = 1, y0 = 0
-        var q: Int
-        var temp: Int
+        var x=BInt(0), y=BInt(1), x0 = BInt(1), y0 = BInt(0)
+        var q: BInt
+        var temp: BInt
         
         while b != 0 {
             q = a / b

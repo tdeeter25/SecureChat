@@ -28,8 +28,8 @@
 		65C178161DE28C4500A96C59 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 65C178151DE28C4500A96C59 /* GoogleService-Info.plist */; };
 		65C178181DE295AD00A96C59 /* ChatListsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C178171DE295AD00A96C59 /* ChatListsVC.swift */; };
 		65C1781A1DE297D400A96C59 /* ChatCreatorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65C178191DE297D400A96C59 /* ChatCreatorVC.swift */; };
-		B1F2B29CF13F5B8CEB97B281 /* Pods_SecureChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2464A8BC326B138146F2BF89 /* Pods_SecureChatTests.framework */; };
-		BD3CD4E87D0343148E50A450 /* Pods_SecureChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F2A738B17E51FD46E2BBF0A /* Pods_SecureChat.framework */; };
+		691083C907C6996629FC5576 /* Pods_SecureChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDFD1B1BB71562206D3785D2 /* Pods_SecureChat.framework */; };
+		E076DBB75C8F67AB23E0B13B /* Pods_SecureChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5403A7A1D877C5E718383E05 /* Pods_SecureChatTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,10 +43,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2464A8BC326B138146F2BF89 /* Pods_SecureChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecureChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F2A738B17E51FD46E2BBF0A /* Pods_SecureChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecureChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		59D426779F3841A2DEF6D718 /* Pods-SecureChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests.release.xcconfig"; sourceTree = "<group>"; };
-		5B17A4F20B5F51223C309869 /* Pods-SecureChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4B4026BF8C851A7D0F669BC7 /* Pods-SecureChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChatTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		4F50E60F49AA00C08EB3E665 /* Pods-SecureChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChat/Pods-SecureChat.debug.xcconfig"; sourceTree = "<group>"; };
+		5403A7A1D877C5E718383E05 /* Pods_SecureChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecureChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6557ABA01DF0D4C500268391 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		6557ABA31DF20F9800268391 /* MG Basic Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MG Basic Math.swift"; sourceTree = "<group>"; };
 		6557ABA41DF20F9800268391 /* MG Benchmark Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MG Benchmark Tools.swift"; sourceTree = "<group>"; };
@@ -73,8 +72,9 @@
 		65C178151DE28C4500A96C59 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		65C178171DE295AD00A96C59 /* ChatListsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatListsVC.swift; sourceTree = "<group>"; };
 		65C178191DE297D400A96C59 /* ChatCreatorVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCreatorVC.swift; sourceTree = "<group>"; };
-		936030D631C72908E825729A /* Pods-SecureChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChat/Pods-SecureChat.debug.xcconfig"; sourceTree = "<group>"; };
-		DA82138257DE877FCCFCD5B9 /* Pods-SecureChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChat/Pods-SecureChat.release.xcconfig"; sourceTree = "<group>"; };
+		CDFD1B1BB71562206D3785D2 /* Pods_SecureChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SecureChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2E5685ED35F64FDC3E3A01D /* Pods-SecureChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChatTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		FDCE4CF476FF2E58AD3B17BF /* Pods-SecureChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SecureChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-SecureChat/Pods-SecureChat.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +83,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				65C178131DDE6A5D00A96C59 /* FBSDKShareKit.framework in Frameworks */,
-				BD3CD4E87D0343148E50A450 /* Pods_SecureChat.framework in Frameworks */,
 				65C178111DDE6A5D00A96C59 /* FBSDKCoreKit.framework in Frameworks */,
 				65C178121DDE6A5D00A96C59 /* FBSDKLoginKit.framework in Frameworks */,
+				691083C907C6996629FC5576 /* Pods_SecureChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1F2B29CF13F5B8CEB97B281 /* Pods_SecureChatTests.framework in Frameworks */,
+				E076DBB75C8F67AB23E0B13B /* Pods_SecureChatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,8 +118,8 @@
 				65C177E91DDE5D0700A96C59 /* SecureChat */,
 				65C177FE1DDE5D0800A96C59 /* SecureChatTests */,
 				65C177E81DDE5D0700A96C59 /* Products */,
-				B291AC30E52B5A9462EC1788 /* Pods */,
 				D4233C4390703EFBFB50DABE /* Frameworks */,
+				DA06895C23F53062FF1F0531 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,27 +163,27 @@
 			path = SecureChatTests;
 			sourceTree = "<group>";
 		};
-		B291AC30E52B5A9462EC1788 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				936030D631C72908E825729A /* Pods-SecureChat.debug.xcconfig */,
-				DA82138257DE877FCCFCD5B9 /* Pods-SecureChat.release.xcconfig */,
-				5B17A4F20B5F51223C309869 /* Pods-SecureChatTests.debug.xcconfig */,
-				59D426779F3841A2DEF6D718 /* Pods-SecureChatTests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		D4233C4390703EFBFB50DABE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				65C1780E1DDE6A5D00A96C59 /* FBSDKCoreKit.framework */,
 				65C1780F1DDE6A5D00A96C59 /* FBSDKLoginKit.framework */,
 				65C178101DDE6A5D00A96C59 /* FBSDKShareKit.framework */,
-				4F2A738B17E51FD46E2BBF0A /* Pods_SecureChat.framework */,
-				2464A8BC326B138146F2BF89 /* Pods_SecureChatTests.framework */,
+				CDFD1B1BB71562206D3785D2 /* Pods_SecureChat.framework */,
+				5403A7A1D877C5E718383E05 /* Pods_SecureChatTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DA06895C23F53062FF1F0531 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4F50E60F49AA00C08EB3E665 /* Pods-SecureChat.debug.xcconfig */,
+				FDCE4CF476FF2E58AD3B17BF /* Pods-SecureChat.release.xcconfig */,
+				D2E5685ED35F64FDC3E3A01D /* Pods-SecureChatTests.debug.xcconfig */,
+				4B4026BF8C851A7D0F669BC7 /* Pods-SecureChatTests.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,12 +193,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C178041DDE5D0800A96C59 /* Build configuration list for PBXNativeTarget "SecureChat" */;
 			buildPhases = (
-				3893CE4CBB34DAAF63B7E9E2 /* [CP] Check Pods Manifest.lock */,
+				3563A200D032873ABE476907 /* [CP] Check Pods Manifest.lock */,
 				65C177E31DDE5D0700A96C59 /* Sources */,
 				65C177E41DDE5D0700A96C59 /* Frameworks */,
 				65C177E51DDE5D0700A96C59 /* Resources */,
-				6DC12B10E3D42AC34F7B50AC /* [CP] Embed Pods Frameworks */,
-				298447339987531B20B72020 /* [CP] Copy Pods Resources */,
+				E362E21A2012C4342241D754 /* [CP] Embed Pods Frameworks */,
+				4697D4FF07BC829F7F1AD714 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,12 +213,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65C178071DDE5D0800A96C59 /* Build configuration list for PBXNativeTarget "SecureChatTests" */;
 			buildPhases = (
-				98B636A0569805DB6911AE7A /* [CP] Check Pods Manifest.lock */,
+				8E6E0FF25EEDEE16DE3C7891 /* [CP] Check Pods Manifest.lock */,
 				65C177F71DDE5D0800A96C59 /* Sources */,
 				65C177F81DDE5D0800A96C59 /* Frameworks */,
 				65C177F91DDE5D0800A96C59 /* Resources */,
-				6659AD506084749C9167F3DF /* [CP] Embed Pods Frameworks */,
-				6523677CBFDCF8CC5B277B69 /* [CP] Copy Pods Resources */,
+				8F6FF6ABC6FFF2CC80B7EB35 /* [CP] Embed Pods Frameworks */,
+				8E2FB1F3EB738B437936C0C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -298,7 +298,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		298447339987531B20B72020 /* [CP] Copy Pods Resources */ = {
+		3563A200D032873ABE476907 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4697D4FF07BC829F7F1AD714 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -313,22 +328,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SecureChat/Pods-SecureChat-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3893CE4CBB34DAAF63B7E9E2 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		6523677CBFDCF8CC5B277B69 /* [CP] Copy Pods Resources */ = {
+		8E2FB1F3EB738B437936C0C6 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -343,7 +343,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6659AD506084749C9167F3DF /* [CP] Embed Pods Frameworks */ = {
+		8E6E0FF25EEDEE16DE3C7891 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8F6FF6ABC6FFF2CC80B7EB35 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -358,7 +373,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SecureChatTests/Pods-SecureChatTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6DC12B10E3D42AC34F7B50AC /* [CP] Embed Pods Frameworks */ = {
+		E362E21A2012C4342241D754 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -371,21 +386,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SecureChat/Pods-SecureChat-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		98B636A0569805DB6911AE7A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -544,7 +544,7 @@
 		};
 		65C178051DDE5D0800A96C59 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 936030D631C72908E825729A /* Pods-SecureChat.debug.xcconfig */;
+			baseConfigurationReference = 4F50E60F49AA00C08EB3E665 /* Pods-SecureChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SecureChat/SecureChat.entitlements;
@@ -564,7 +564,7 @@
 		};
 		65C178061DDE5D0800A96C59 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA82138257DE877FCCFCD5B9 /* Pods-SecureChat.release.xcconfig */;
+			baseConfigurationReference = FDCE4CF476FF2E58AD3B17BF /* Pods-SecureChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = SecureChat/SecureChat.entitlements;
@@ -584,7 +584,7 @@
 		};
 		65C178081DDE5D0800A96C59 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B17A4F20B5F51223C309869 /* Pods-SecureChatTests.debug.xcconfig */;
+			baseConfigurationReference = D2E5685ED35F64FDC3E3A01D /* Pods-SecureChatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -599,7 +599,7 @@
 		};
 		65C178091DDE5D0800A96C59 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59D426779F3841A2DEF6D718 /* Pods-SecureChatTests.release.xcconfig */;
+			baseConfigurationReference = 4B4026BF8C851A7D0F669BC7 /* Pods-SecureChatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

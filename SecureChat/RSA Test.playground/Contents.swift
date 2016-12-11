@@ -127,7 +127,7 @@ extension Character {
     }
 }
 
-
+/*
 var p1 = 19
 var p2 = 31
 
@@ -308,8 +308,67 @@ func inverse(num: Int, phi: Int) -> Int{
 }
 
 print(inverse(num: 7, phi: 120))
+*/
+
+func pad(string : String, toSize: Int) -> String {
+    var padded = string
+    for _ in 0..<toSize - string.characters.count {
+        padded = "0" + padded
+    }
+    return padded
+}
+
+// String to binary representation
+
+var testString = "Here is this test brah"
+var length = testString.characters.count
+var binaryString = ""
+
+for i in 0...length-1{
+    let index = testString.index(testString.startIndex, offsetBy: i)
+    var aValue = testString[index].asciiValue
+    var result = String(aValue!, radix: 2)
+    var bitString = pad(string: result, toSize: 8)
+    
+    binaryString.append(bitString)
+}
 
 
+//Binary Representation to String
+var decryptString = ""
+
+while decryptString.characters.count % 8 != 0 {
+    decryptString = "0" + decryptString
+}
+
+for i in stride(from: 0, to: binaryString.characters.count, by: 8){
+    var bitString = binaryString.substring(from: i, to: i+7)
+    print(bitString)
+  
+    var asInt = Int(bitString, radix: 2)
+    var asciiChar = Character(UnicodeScalar(asInt!)!)
+    decryptString.append(asciiChar)
+}
+
+
+//Binary Num to Decimal
+var binaryNum = "11111111"
+var sum = 0
+var len = binaryNum.characters.count
+var currentPower = binaryNum.characters.count-1
+for i in 0...len-1 {
+     let index = binaryNum.index(binaryNum.startIndex, offsetBy: i)
+    print(index)
+    if binaryNum[index] == "1" {
+        var temp = Int(pow(Double(2), Double(currentPower)))
+        sum += temp
+    }
+    currentPower = currentPower - 1
+}
+print(sum)
+
+
+print(binaryNum)
 
 
 

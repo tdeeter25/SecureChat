@@ -60,6 +60,7 @@ class ChatViewController: JSQMessagesViewController {
     }
     
     
+    
     @IBAction func changeMessageType(_ sender: AnyObject) {
         if(segControl.selectedSegmentIndex == 0){
             isEncrypted = true
@@ -105,6 +106,7 @@ class ChatViewController: JSQMessagesViewController {
         for number in byteArray {
             let numAsInt = Int(number)
             let base = BInt(numAsInt)
+            
             //Encrypt the number m by doing m ^ Public Key mod n
             let encrypt = mod_exp(base, self.currentChat.publicKey, self.currentChat.modulus)
             encryptedString.append(encrypt.dec)
@@ -112,6 +114,7 @@ class ChatViewController: JSQMessagesViewController {
         }
         return encryptedString
     }
+    
     
     func decryptMessage(str: String, cipher: BInt) -> String {
         

@@ -11,69 +11,73 @@ import FBSDKLoginKit
 import FBSDKCoreKit
 import Firebase
 import FirebaseAuth
-class MainViewController: UIViewController, FBSDKLoginButtonDelegate {
+
+class MainViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
    
-    @IBOutlet weak var loginButton: FBSDKLoginButton!
-        
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
     }
-
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func randPrimeBInt() -> BInt{
+        var n = randomBInt(bits: 512)
+        print("attempt")
+        if isPrime(n){
+            return n
         }
-        print("OMG")
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-            print("user id = " + (user?.uid)!)
+        else{
+            return randPrimeBInt()
         }
-        self.performSegue(withIdentifier: "goToChat", sender: nil)
-        print("yes")
+    }
+    func pad(string : String, toSize: Int) -> String {
+        var padded = string
+        for _ in 0..<toSize - string.characters.count {
+            padded = "0" + padded
+        }
+        return padded
     }
     
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print("ok")
-    }
-    
-    
-
-    func loginFacebook(_ segueId: String) {
-        let facebookLogin = FBSDKLoginManager()
-        facebookLogin.logIn(withReadPermissions: ["user_friends", "public_profile", "email"], from: self, handler: {
-            (facebookResult, facebookError) -> Void in
+    func stringToBinary(testString: String) -> String {
+        var length = testString.characters.count
+        var binaryString = ""
+        
+        for i in 0...length-1{
+            let index = testString.index(testString.startIndex, offsetBy: i)
+            var aValue = testString[index].asciiValue
+            var result = String(aValue!, radix: 2)
+            var bitString = pad(string: result, toSize: 8)
             
-            if facebookError != nil {
-                print("Facebook login failed. UH OH \(facebookError)")
-            } else if (facebookResult?.isCancelled)! {
-                print("Facebook login was cancelled. YIKES")
-            } else {
-                let credential = FIRFacebookAuthProvider.credential(withAccessToken: FBSDKAccessToken.current().tokenString)
-                FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-                    if let error = error {
-                        print("Sign in failed:", error.localizedDescription)
-                    } else {
-                        print("Sign in worked for", user?.displayName)
-                       /*
-                        self.getFriends()
-                        self.getId()
-                       
-                         //stores info in AppState of the user's basic information.
-                        AppState.sharedInstance.profilePicture = user?.photoURL
-                        AppState.sharedInstance.userId = user?.uid
-                        AppState.sharedInstance.displayName = user?.displayName
-                        */
-                        self.performSegue(withIdentifier: segueId, sender: nil)
-                    }
-                }
-            }
-        })
+            binaryString.append(bitString)
+        }
+        return binaryString
     }
+    
+    func stringToBigIntDecimal(binaryString: String) -> BInt {
+        var stringAsDecimal = BInt(0)
+        var len = binaryString.characters.count
+        var currentPower = binaryString.characters.count-1
+        for i in 0...len-1 {
+            let index = binaryString.index(binaryString.startIndex, offsetBy: i)
+            if binaryString[index] == "1" {
+                var temp = BInt(2) ^ currentPower
+                stringAsDecimal += temp
+            }
+            currentPower = currentPower - 1
+        }
+        return stringAsDecimal
+    }
+    
 
+    
     @IBAction func loginTouched(_ sender: AnyObject) {
         login("goToChatList")
     }

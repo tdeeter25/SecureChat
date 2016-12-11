@@ -4,7 +4,6 @@
 target 'SecureChat' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
   # Pods for SecureChat
 
 pod 'Firebase/Core'
@@ -15,7 +14,8 @@ pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
 pod 'Eureka', :git => 'https://github.com/xmartlabs/Eureka.git'
-  target 'SecureChatTests' do
+
+target 'SecureChatTests' do
     inherit! :search_paths
     # Pods for testing
   end
