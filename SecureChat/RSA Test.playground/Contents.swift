@@ -319,8 +319,7 @@ func pad(string : String, toSize: Int) -> String {
 }
 
 // String to binary representation
-
-var testString = "Here is this test brah"
+var testString = "Test"
 var length = testString.characters.count
 var binaryString = ""
 
@@ -333,6 +332,7 @@ for i in 0...length-1{
     binaryString.append(bitString)
 }
 
+print(binaryString)
 
 //Binary Representation to String
 var decryptString = ""
@@ -352,7 +352,7 @@ for i in stride(from: 0, to: binaryString.characters.count, by: 8){
 
 
 //Binary Num to Decimal
-var binaryNum = "11111111"
+var binaryNum = "01010100011001010111001101110100"
 var sum = 0
 var len = binaryNum.characters.count
 var currentPower = binaryNum.characters.count-1

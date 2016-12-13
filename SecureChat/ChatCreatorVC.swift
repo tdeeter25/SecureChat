@@ -161,10 +161,11 @@ class ChatCreatorVC: FormViewController {
     }
  
     //finds a random prime number no greater than the totient that is coprime with it
+    
     func randE(phi: BInt) -> BInt {
         var e: BInt
         
-        if let bound = Int(phi.dec){
+        if Int(phi.dec) != nil{
             e = randPrime(num: Int(phi.dec)!)
         }
         else {
@@ -180,6 +181,9 @@ class ChatCreatorVC: FormViewController {
             }
         }
     }
+    
+    
+    
     /*
     func randPrimeBInt(numBits: Int) -> BInt{
         var n = randomBInt(bits: numBits)
@@ -203,6 +207,8 @@ class ChatCreatorVC: FormViewController {
         }
     }
     */
+    
+    
     //generate the inverse using Euclid's Extended algorithm
     func inverse(num: BInt, phi: BInt) -> BInt{
         var a = num, b = phi
